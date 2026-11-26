@@ -1,0 +1,31 @@
+# Local system and editor files
+.DS_Store
+Thumbs.db
+__MACOSX/
+.vscode/
+.idea/
+
+# Python and browser-test artefacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+test-output/
+
+# Secrets and personal material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+private/
+submission/
+lecture-materials/
+licensed-standards/
+student-records/
+
+# Temporary Office files
+~$*
+*.tmp
