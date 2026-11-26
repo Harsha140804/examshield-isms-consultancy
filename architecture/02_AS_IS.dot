@@ -1,0 +1,11 @@
+digraph G {
+graph [bgcolor="white",pad="0.3",ranksep="0.58",nodesep="0.35",fontname="DejaVu Sans",fontsize=19,labelloc=t]; node [shape=box,style="rounded,filled",fillcolor="#E8F1F5",color="#436B80",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.12"]; edge [fontname="DejaVu Sans",fontsize=9,color="#4E6C7E",arrowsize=.7];
+rankdir=TB; label="AS-IS | Assumed current-state architecture"; student[label="Students / examiners / admins"]; provider[label="University roster and support email"]; subgraph cluster_cloud {label="Cloud hosting (assumed)"; color="#B08B76"; app[label="Single public web application
+Password-only privileged access (R04)
+Weak tenant checks (R15)",fillcolor="#FBE1DA",color="#B66757"]; db[label="Shared data store
+Questions / responses / grades
+Broad entitlements (R01, R03, R05)",fillcolor="#FBE1DA",color="#B66757"]; logs[label="Local mutable logs
+R12",fillcolor="#FBE1DA"]; backups[label="Unverified backups
+R02, R10",fillcolor="#FBE1DA"]; app->db[label="read/write"]; app->logs; db->backups; } student->app[label="web traffic"]; provider->app[label="manual imports"]; admin[label="Ad hoc IT administration
+R17, R18, R23"]; admin->app[label="direct changes"];
+}

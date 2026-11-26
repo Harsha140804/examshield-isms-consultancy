@@ -1,0 +1,10 @@
+digraph G {
+graph [bgcolor="white",pad="0.3",ranksep="0.58",nodesep="0.35",fontname="DejaVu Sans",fontsize=19,labelloc=t]; node [shape=box,style="rounded,filled",fillcolor="#E8F1F5",color="#436B80",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.12"]; edge [fontname="DejaVu Sans",fontsize=9,color="#4E6C7E",arrowsize=.7];
+rankdir=TB; label="Control workflow | Independent grade release (SR02 / R03 / R22)"; a[label="Examiner records provisional mark
+Role E · A09"]; b[label="Moderator reviews mark and evidence
+Role M"]; c[label="Moderation approved?",shape=diamond,fillcolor="#FCEBD2"]; d[label="Registrar checks release schedule
+Role R"]; e[label="Publish only after approval + time gate?",shape=diamond,fillcolor="#FCEBD2"]; f[label="Publish student-specific result
+A10",fillcolor="#DAEFE7"]; g[label="Return to examiner for correction"]; h[label="Deny release; log and investigate
+A13",fillcolor="#FBE1DA"]; l[label="Protected audit history
+Actor / action / time / version",shape=cylinder]; a->b->c; c->d[label="yes"]; c->g[label="no"]; g->a; d->e; e->f[label="yes"]; e->h[label="no"]; a->l[style=dashed]; b->l[style=dashed]; d->l[style=dashed]; f->l[style=dashed]; h->l[style=dashed];
+}

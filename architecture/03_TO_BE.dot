@@ -1,0 +1,16 @@
+digraph G {
+graph [bgcolor="white",pad="0.3",ranksep="0.58",nodesep="0.35",fontname="DejaVu Sans",fontsize=19,labelloc=t]; node [shape=box,style="rounded,filled",fillcolor="#E8F1F5",color="#436B80",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.12"]; edge [fontname="DejaVu Sans",fontsize=9,color="#4E6C7E",arrowsize=.7];
+rankdir=TB; label="TO-BE | Layered security architecture (design only)"; users[label="Students · examiners · moderators · registrars"]; idp[label="Identity provider
+Tenant SSO / privileged MFA
+SR01, R04",fillcolor="#DAEFE7"]; uni[label="University controller
+Roster API / approved notices"]; subgraph cluster_public {label="Public edge / trust boundary 1"; color="#7B9CAC"; waf[label="DDoS / WAF / TLS edge
+SR08, R06",fillcolor="#DAEFE7"]; } subgraph cluster_app {label="Private application zone / trust boundary 2"; color="#7B9CAC"; api[label="Application/API services
+Tenant RBAC / workflow gate
+SR02, SR04, R03, R15",fillcolor="#DAEFE7"]; scan[label="Upload validation + quarantine
+SR06, R09"]; } subgraph cluster_data {label="Private data zone / trust boundary 3"; color="#7B9CAC"; qb[label="Restricted question bank
+A04, R01"]; grades[label="Responses + grades
+A07/A09/A10, R13"]; keys[label="Managed key service
+SR03, R18"]; } subgraph cluster_assurance {label="Separate security and recovery accounts"; color="#7B9CAC"; logs[label="Protected logs / SIEM
+SR05/SR10, R12"]; backup[label="Immutable backup repository
+SR09, R10"]; } users->idp[label="authenticate"]; idp->users[label="token",constraint=false]; users->waf[label="HTTPS + token"]; uni->waf[label="authorised TLS API"]; waf->api[label="filtered HTTPS"]; api->scan[label="untrusted uploads"]; scan->api[label="clean only",constraint=false]; api->qb[label="authorised query"]; api->grades[label="tenant-scoped transactions"]; keys->qb[style=dashed]; keys->grades[style=dashed]; api->logs[label="audit events"]; waf->logs; qb->backup[label="encrypted backup"]; grades->backup;
+}

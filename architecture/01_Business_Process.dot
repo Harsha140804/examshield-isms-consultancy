@@ -1,0 +1,15 @@
+digraph G {
+graph [bgcolor="white",pad="0.3",ranksep="0.58",nodesep="0.35",fontname="DejaVu Sans",fontsize=19,labelloc=t]; node [shape=box,style="rounded,filled",fillcolor="#E8F1F5",color="#436B80",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.12"]; edge [fontname="DejaVu Sans",fontsize=9,color="#4E6C7E",arrowsize=.7];
+rankdir=TB; label="ExamShield | Assessment lifecycle (proposed)"; a[label="P01 Registration + identity
+Registrar · A01/A02"]; b[label="P02 Schedule and validate roster
+Exam operations · A03"]; c[label="P03 Prepare questions
+Examiner · A04"]; d[label="Independent approval
+Moderator · A05",fillcolor="#DAEFE7"]; e[label="P04 Deliver assigned exam
+Candidate · A06/A07"]; f[label="P05 Submit and issue receipt
+Exam operations · A07/A08"]; g[label="P06 Mark and moderate
+Academic lead · A09"]; h[label="P07 Approve and publish
+Registrar · A10",fillcolor="#DAEFE7"]; i[label="P08 Retention / rights requests
+Privacy lead · A11/A12"]; j[label="P09 Security monitoring
+Security lead · A13/A14",fillcolor="#FCEBD2"]; k[label="P10 Continuity and support
+IT + exam operations · A15–A20",fillcolor="#FCEBD2"]; a->b->e->f->g->h->i; c->d->e; b->c[style=dashed,label="exam specification"]; e->j[style=dashed]; h->j[style=dashed]; j->k[style=dashed,label="incident escalation"]; k->e[style=dashed,label="recovery / notices",constraint=false];
+}

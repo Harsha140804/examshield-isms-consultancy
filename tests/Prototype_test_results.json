@@ -1,0 +1,70 @@
+{
+  "scope": "Automated browser interaction tests on offline mock UI only; no security assurance or production validation.",
+  "results": [
+    {
+      "test": "T01 Invalid demo MFA",
+      "result": "PASS",
+      "observed": "Demo verification failed."
+    },
+    {
+      "test": "T02 Examiner self-approval blocked",
+      "result": "PASS",
+      "observed": "Denied: requires Moderator persona."
+    },
+    {
+      "test": "T03 Independent question approval",
+      "result": "PASS",
+      "observed": "Approved"
+    },
+    {
+      "test": "T04 Early exam access blocked",
+      "result": "PASS",
+      "observed": "Denied: exam is outside its demo window."
+    },
+    {
+      "test": "T05 Submission receipt",
+      "result": "PASS",
+      "observed": "Demo receipt ES-R001; not durable storage."
+    },
+    {
+      "test": "T06 Duplicate submission handled",
+      "result": "PASS",
+      "observed": "Existing demo receipt ES-R001 (no duplicate)."
+    },
+    {
+      "test": "T07 Examiner cannot publish",
+      "result": "PASS",
+      "observed": "Denied: requires Registrar persona."
+    },
+    {
+      "test": "T08 Registrar cannot bypass moderation",
+      "result": "PASS",
+      "observed": "Moderation must occur first."
+    },
+    {
+      "test": "T09 Independent publication",
+      "result": "PASS",
+      "observed": "Published"
+    },
+    {
+      "test": "T10 Simulated alert",
+      "result": "PASS",
+      "observed": "Synthetic alert ES-INC-01 created; review R01 and incident playbook."
+    },
+    {
+      "test": "T11 Denials audited",
+      "result": "PASS",
+      "observed": "5 denied events"
+    },
+    {
+      "test": "T12 Browser errors absent",
+      "result": "PASS",
+      "observed": "[]"
+    },
+    {
+      "test": "T13 Reset clears state",
+      "result": "PASS",
+      "observed": "Not signed in"
+    }
+  ]
+}

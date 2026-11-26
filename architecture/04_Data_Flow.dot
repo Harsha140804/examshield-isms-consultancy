@@ -1,0 +1,10 @@
+digraph G {
+graph [bgcolor="white",pad="0.3",ranksep="0.58",nodesep="0.35",fontname="DejaVu Sans",fontsize=19,labelloc=t]; node [shape=box,style="rounded,filled",fillcolor="#E8F1F5",color="#436B80",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.12"]; edge [fontname="DejaVu Sans",fontsize=9,color="#4E6C7E",arrowsize=.7];
+rankdir=LR; label="Data flow | External parties and personal information"; student[label="Student
+External user",shape=oval]; university[label="University
+Controller",shape=oval]; staff[label="Examiner / registrar",shape=oval]; subgraph cluster_es {label="ExamShield processor boundary"; color="#7B9CAC"; intake[label="P01 identity + roster"]; delivery[label="P04/P05 exam delivery
+submission receipt"]; marking[label="P06/P07 marking and release"]; privacy[label="P08 rights and retention"]; store[label="D1 restricted records
+A01/A07/A09/A10",shape=cylinder]; logs[label="D2 restricted audit logs
+A13",shape=cylinder]; } cloud[label="Cloud subprocessor
+UK region assumed",shape=oval]; university->intake[label="roster / eligibility"]; student->intake[label="login identity"]; intake->store[label="minimal identifiers"]; student->delivery[label="responses"]; delivery->student[label="receipt",constraint=false]; delivery->store[label="encrypted responses"]; staff->marking[label="marks / approvals"]; marking->store[label="grade versions"]; marking->student[label="approved result",constraint=false]; university->privacy[label="verified instructions"]; privacy->store[label="access / erase / hold"]; privacy->university[label="response / breach notice",constraint=false]; delivery->logs[label="event metadata"]; marking->logs[label="approval audit"]; store->cloud[label="hosting / backup dependency",style=dashed];
+}
